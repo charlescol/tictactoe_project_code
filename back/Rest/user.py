@@ -3,7 +3,7 @@ from lib.const import *
 from lib.models.user import User
 from lib.controller.business_logic import *
 
-""" Called when an user needs to be created """
+""" lambda function :  Called when an user needs to be created """
 def create_handler(event, context):
     try :
         psn = json.loads(event['body'])['psn'] # get psn from body
@@ -22,7 +22,7 @@ def create_handler(event, context):
     except Exception :
         return {"statusCode": 500}
 
-""" Called when an user needs to be deleted """
+""" lambda function :  Called when an user needs to be deleted """
 def delete_handler(event, context):
     try :
         user = User.from_dic(json.loads(event['body'])) # get user from body
