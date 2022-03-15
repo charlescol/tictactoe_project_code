@@ -2,7 +2,7 @@ import json
 import traceback
 from  lib.controller.business_logic import *
 
-""" Called when a new move is played"""
+""" lambda function : Called when a new move is played"""
 def playedEvent_handler(event, context) : 
     try :
         _json = json.loads(event['body']) # get body
@@ -16,7 +16,7 @@ def playedEvent_handler(event, context) :
     except Exception :
         return {"statusCode": 500, 'message': traceback.format_exc()}
 
-""" Called to create a game (only for development)""" 
+""" lambda function : Called to create a game (only for development)""" 
 def create_handler(event, context) :
     try :
         game = create()
