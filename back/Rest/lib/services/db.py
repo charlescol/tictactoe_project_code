@@ -11,7 +11,7 @@ class Database() :
     @staticmethod
     def init(tableName:str) -> object :
         if Database.session == None and Database.metadata == None: # if the connection is established for the first time
-            engine = sqlalchemy.create_engine("mssql+pyodbc://charlescol:Lamartine01@gamecommandhandlerdb.c4v8gfe7914t.us-east-1.rds.amazonaws.com:1433/GameCommandDB?driver=ODBC+Driver+17+for+SQL+Server")
+            engine = sqlalchemy.create_engine("mssql+pyodbc://"+os.environ.get('username')+":"+os.environ.get('mdp')+"@"+os.environ.get('dbserver')+".c4v8gfe7914t.us-east-1.rds.amazonaws.com:1433/"+os.environ.get('dbname')+"?driver=ODBC+Driver+17+for+SQL+Server")
             Database.session = engine.connect()
             Database.metadata = sqlalchemy.MetaData(bind=engine)
         return sqlalchemy.Table(tableName, Database.metadata, autoload = True)# 
