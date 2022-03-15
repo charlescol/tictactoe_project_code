@@ -22,7 +22,7 @@ def create_handler(event, context):
     except Exception :
         return {"statusCode": 500}
 
-
+""" Called when an user needs to be deleted """
 def delete_handler(event, context):
     try :
         user = User.from_dic(json.loads(event['body'])) # get user from body
